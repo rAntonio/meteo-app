@@ -1,11 +1,12 @@
 .card {
-    background: #fff;
+    background: white;
     width: 96%;
     display: flex;
     align-items: center;
     border-radius: 30px;
     margin: 10px 2%;
     padding: 32px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .card__info__place {
@@ -31,7 +32,7 @@
 }
 
 .card__weather__temp {
-    font-size: 30px;
+    font-size: 22px;
 }
 
 .card__weather__icon,
@@ -44,6 +45,9 @@ img {
         width: 500px;
         align-items: center;
         margin: auto;
+    }
+    .card__weather__temp {
+        font-size: 30px;
     }
 }
 

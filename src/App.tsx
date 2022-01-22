@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import LocationInput from './components/LocationInput/LocationInput';
+import WeatherCard from './components/WeatherCard/WeatherCard';
+import { getWeatherCardProps, loadWeatherFromLocalisation, loadWeatherFromLocalisationName } from './services/weather.service';
 
 function App() {
+  //Called when submitting a new city search
+  const loadData = (input : string) => {
+    loadWeatherFromLocalisationName(input).then((data) => {
+      setWeathers(getWeatherCardProps(data));
+    })
+  }
+
+  //on load app, search for current location
+  useEffect(() => {
+    navigator?.geolocation?.getCurrentPosition((position) => {
+      loadWeatherFromLocalisation(position.coords.latitude,position.coords.longitude).then((data) => {
+        setWeathers(getWeatherCardProps(data));
+      })
+    });
+  }, []);
+  
+
+  const [weathers,setWeathers] = useState<any>(null);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main>
+        <LocationInput 
+          placeholder='Rechercher...'
+          onSubmit={loadData}
+          className='input__location'/>
+          {weathers && 
+            <WeatherCard {...weathers} />
+          }
+      </main>
     </div>
   );
 }

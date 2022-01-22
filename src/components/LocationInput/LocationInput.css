@@ -4,10 +4,10 @@
 
 .input__container input {
     outline: none;
-    border: 2px solid #dadce0;
+    border: 2px solid var(--primary);
     padding: 16px 13px;
     font-size: 18px;
-    border-radius: 5px;
+    border-radius: 25px;
     width: 100%;
 }
 
@@ -15,24 +15,24 @@
     top: -8px;
     padding: 0 3px;
     font-size: 14px;
-    color: #8d8d8d;
+    color: var(--primary-light);
 }
 
 .input__container input:focus {
-    border: 2px solid royalblue;
+    border: 2px solid var(--primary);
 }
 
 .input__container label {
-    color: #8d8d8d;
+    color: var(--primary-light);
     position: absolute;
     top: 20px;
-    left: 13px;
-    background: #ffffff;
+    left: 20px;
+    background: white;
 }
 
 .input__container input:focus+label {
     top: -8px;
     padding: 0 3px;
     font-size: 14px;
-    color: royalblue;
+    color: var(--primary);
 }
