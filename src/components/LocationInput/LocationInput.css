@@ -1,0 +1,38 @@
+.input__container {
+    position: relative;
+}
+
+.input__container input {
+    outline: none;
+    border: 2px solid #dadce0;
+    padding: 16px 13px;
+    font-size: 18px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.input__container input:valid+label {
+    top: -8px;
+    padding: 0 3px;
+    font-size: 14px;
+    color: #8d8d8d;
+}
+
+.input__container input:focus {
+    border: 2px solid royalblue;
+}
+
+.input__container label {
+    color: #8d8d8d;
+    position: absolute;
+    top: 20px;
+    left: 13px;
+    background: #ffffff;
+}
+
+.input__container input:focus+label {
+    top: -8px;
+    padding: 0 3px;
+    font-size: 14px;
+    color: royalblue;
+}
