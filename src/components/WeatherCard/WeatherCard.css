@@ -1,0 +1,54 @@
+.card {
+    background: #fff;
+    width: 96%;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    margin: 10px 2%;
+    padding: 32px;
+}
+
+.card__info__place {
+    font-size: 14px;
+    color: var(--primary-light);
+}
+
+.card__info__time {
+    font-size: 30px;
+    color: var(--primary);
+}
+
+.card__info__date {
+    font-size: 14px;
+    color: var(--primary-light);
+}
+
+.card__weather {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card__weather__temp {
+    font-size: 30px;
+}
+
+.card__weather__icon,
+img {
+    animation: move 1s infinite alternate ease-in-out;
+}
+
+@media (min-width: 992px) {
+    .card {
+        width: 500px;
+        align-items: center;
+        margin: auto;
+    }
+}
+
+@keyframes move {
+    to {
+        transform: translateY(-10px);
+    }
+}
