@@ -20,6 +20,7 @@
 .card__image {
     background: white;
     border-radius: 50px;
+    min-width: 100px;
 }
 
 .card__header {
