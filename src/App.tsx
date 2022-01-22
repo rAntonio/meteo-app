@@ -3,6 +3,8 @@ import './App.css';
 import LocationInput from './components/LocationInput/LocationInput';
 import WeatherCard from './components/WeatherCard/WeatherCard';
 import { getWeatherCardProps, loadWeatherFromLocalisation, loadWeatherFromLocalisationName } from './services/weather.service';
+import { ThemeContext, themes } from './components/Theme/contexts/ThemeContext';
+import ThemeToogle from './components/ThemeToogle/ThemeToogle';
 
 function App() {
   //Called when submitting a new city search
@@ -30,13 +32,25 @@ function App() {
 
   return (
     <div className="App">
-      <main>
+      <header className="App-header">
         <LocationInput 
           placeholder='Rechercher...'
           onSubmit={loadData}
-          className='input__location'/>
+          className='input__location'
+        />
+      </header>
+      <main>
         <WeatherCard {...weathers} loading={loading} />
       </main>
+      <ThemeContext.Consumer>
+      {({ changeTheme,theme }) => {
+          return <ThemeToogle
+                  toogleAction={() => {
+                    changeTheme((theme===themes.dark) ? themes.light : themes.dark);
+                  }}
+                />
+      }}
+        </ThemeContext.Consumer>
     </div>
   );
 }

@@ -21,9 +21,22 @@ body {
     align-items: flex-start;
     width: 100vw;
     min-height: 100vh;
-    background-image: url('/public/cloudy_blue_sky_optimised.jpg');
     background-position: bottom;
     background-size: cover;
+}
+
+body.dark-body {
+    background-image: url('/public/dark_sky_optimized.jpg');
+    --secondary: #eef7fe;
+    --primary: #383e4e;
+    --primary-light: #3c4153;
+}
+
+body.light-body {
+    background-image: url('/public/cloudy_blue_sky_optimised.jpg');
+    --secondary: #eef7fe;
+    --primary: #014f99;
+    --primary-light: #2F2F31;
 }
 
 ul {
