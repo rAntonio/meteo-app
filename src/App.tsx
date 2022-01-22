@@ -7,8 +7,10 @@ import { getWeatherCardProps, loadWeatherFromLocalisation, loadWeatherFromLocali
 function App() {
   //Called when submitting a new city search
   const loadData = (input : string) => {
+    setLoading(true);
     loadWeatherFromLocalisationName(input).then((data) => {
       setWeathers(getWeatherCardProps(data));
+      setLoading(false);
     })
   }
 
@@ -17,12 +19,14 @@ function App() {
     navigator?.geolocation?.getCurrentPosition((position) => {
       loadWeatherFromLocalisation(position.coords.latitude,position.coords.longitude).then((data) => {
         setWeathers(getWeatherCardProps(data));
+        setLoading(false);
       })
     });
   }, []);
   
 
   const [weathers,setWeathers] = useState<any>(null);
+  const [loading,setLoading] = useState<boolean>(true);
 
   return (
     <div className="App">
@@ -31,9 +35,7 @@ function App() {
           placeholder='Rechercher...'
           onSubmit={loadData}
           className='input__location'/>
-          {weathers && 
-            <WeatherCard {...weathers} />
-          }
+        <WeatherCard {...weathers} loading={loading} />
       </main>
     </div>
   );

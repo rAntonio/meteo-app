@@ -1,4 +1,4 @@
-import React from 'react';
+import ContentLoader, { IContentLoaderProps } from 'react-content-loader';
 import './WeatherCard.css';
 
 export interface WeatherCardProps {
@@ -6,8 +6,10 @@ export interface WeatherCardProps {
   date: Date;
   tempFahrenheit: number;
   imgUrl ?: string;
+  loading ?: boolean;
 };
 
+//Default svg icon
 const svg = (
   <svg width="34" className="card__weather__icon" height="24" viewBox="0 0 34 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path
@@ -15,12 +17,15 @@ const svg = (
     fill="#567DF4" />
 </svg>
 )
+
+//rendered component
 const WeatherCard = (
   {
     name,
     date,
     tempFahrenheit,
-    imgUrl
+    imgUrl,
+    loading = false
   } : WeatherCardProps
 ) => {
 
@@ -35,6 +40,11 @@ const WeatherCard = (
   console.log("tempFahrenheit",tempFahrenheit)
 
   const fullDate = new Intl.DateTimeFormat(undefined, { month: "long", day: "numeric", year: "numeric",weekday: "long" }).format(date);
+
+  //if component is on loading state,load skeleton
+  if(loading)
+  return (<WeatherCardLoader/>)
+
   return (
     <div className="card">
       <div className="card__info">
@@ -49,5 +59,25 @@ const WeatherCard = (
     </div>
   );
 }
+
+//Generated from https://skeletonreact.com/
+const WeatherCardLoader = (props :IContentLoaderProps) => (
+  <ContentLoader 
+    speed={2}
+    width={500}
+    height={160}
+    viewBox="0 0 500 160"
+    backgroundColor="#faf9f9"
+    foregroundColor="#ababab"
+    className='card card-loading'
+    {...props}
+  >
+    <rect x="32" y="51" rx="0" ry="0" width="94" height="14" /> 
+    <rect x="32" y="71" rx="0" ry="0" width="110" height="23" /> 
+    <rect x="32" y="102" rx="0" ry="0" width="149" height="13" /> 
+    <rect x="392" y="69" rx="0" ry="0" width="77" height="26" /> 
+    <circle cx="333" cy="85" r="33" />
+  </ContentLoader>
+)
 
 export default WeatherCard;
