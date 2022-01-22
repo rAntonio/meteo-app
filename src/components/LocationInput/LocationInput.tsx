@@ -5,17 +5,19 @@ export interface LocationInputProps {
   placeholder: string;
   onSubmit : (input : string) => void;
   className?: string;
+  error?: boolean;
 };
 
 const LocationInput = ({
   placeholder,
   onSubmit,
-  className
+  className,
+  error = false
 } : LocationInputProps) => {
   const [value, setValue] = useState("");
 
   return (
-      <div className={`input__container ${className}`}>
+      <div className={`input__container ${className} ${error ? 'location__error' : ''} `}>
         <input
           onChange={(e) => setValue(e.target.value) }
           value={value}

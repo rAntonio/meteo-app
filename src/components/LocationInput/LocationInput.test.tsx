@@ -6,7 +6,7 @@ test('renders learn react link', () => {
   render(
     <LocationInput 
       placeholder='Rechercher...'
-      onSubmit={(input)=> {console.log("input" , input)}}
+      onSubmit={(input)=> {console.log("input" , input);return true;}}
     />
   );
   const linkElement = screen.getByText(/Rechercher.../i);

@@ -1,5 +1,6 @@
 :root {
     --font-body: Arial, sans-serif;
+    --error: rgb(255, 0, 0);
 }
 
 body {
