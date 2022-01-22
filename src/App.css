@@ -39,6 +39,10 @@ body.light-body {
     --primary-light: #2F2F31;
 }
 
+main {
+    margin-top: 10vh;
+}
+
 ul {
     list-style: none;
 }

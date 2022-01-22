@@ -12,7 +12,7 @@
 }
 
 .input__container input:valid+label {
-    top: -8px;
+    top: 3px;
     padding: 0 3px;
     font-size: 14px;
     color: var(--primary-light);
@@ -31,7 +31,7 @@
 }
 
 .input__container input:focus+label {
-    top: -8px;
+    top: 3px;
     padding: 0 3px;
     font-size: 14px;
     color: var(--primary);

@@ -5,6 +5,10 @@ export interface WeatherCardProps {
   name: string;
   date: Date;
   tempFahrenheit: number;
+  tempMin: number,
+  tempMax: number,
+  wind: number,
+  humidity: number,
   imgUrl ?: string;
   loading ?: boolean;
 };
@@ -24,6 +28,10 @@ const WeatherCard = (
     name,
     date,
     tempFahrenheit,
+    tempMin,
+    tempMax,
+    wind,
+    humidity,
     imgUrl,
     loading = false
   } : WeatherCardProps
@@ -47,14 +55,23 @@ const WeatherCard = (
 
   return (
     <div className="card">
-      <div className="card__info">
-        <p className="card__info__place">{name}</p>
-        <p className="card__info__time">{time}</p>
-        <p className="card__info__date">{fullDate}</p>
+      <div className="card__header">
+        <div className='card__image'>
+          {imgUrl ? <img src={imgUrl} alt="-" id="weather-icon" /> : svg}
+        </div>
+        <h2 className="card__temp">{Math.round(((tempFahrenheit - 32) * 5) / 9)}° C</h2>
+        <p className="card__hour">Min : {Math.round(((tempMin - 32) * 5) / 9)}° / Max : {Math.round(((tempMax - 32) * 5) / 9)}° </p>
       </div>
-      <div className="card__weather">
-        {imgUrl ? <img src={imgUrl} alt="-" id="weather-icon" /> : svg}
-        <p className="card__weather__temp">{Math.round(((tempFahrenheit - 32) * 5) / 9)}° C</p>
+      <div className="card__description">
+        <div className="card__info">
+          <p className="card__info__place">{name}</p>
+          <p className="card__info__time">{time}</p>
+          <p className="card__info__date">{fullDate}</p>
+        </div>
+        <div className="card__weather">
+          <p className="card__weather__temp">Humidity: {humidity}%</p>
+          <p className="card__weather__temp">Wind: {wind} km/h</p>
+        </div>
       </div>
     </div>
   );
@@ -65,18 +82,21 @@ const WeatherCardLoader = (props :IContentLoaderProps) => (
   <ContentLoader 
     speed={2}
     width={500}
-    height={160}
-    viewBox="0 0 500 160"
+    height={430}
+    viewBox="0 0 500 430"
     backgroundColor="#faf9f9"
     foregroundColor="#ababab"
     className='card card-loading'
     {...props}
   >
-    <rect x="32" y="51" rx="0" ry="0" width="94" height="14" /> 
-    <rect x="32" y="71" rx="0" ry="0" width="110" height="23" /> 
-    <rect x="32" y="102" rx="0" ry="0" width="149" height="13" /> 
-    <rect x="392" y="69" rx="0" ry="0" width="77" height="26" /> 
-    <circle cx="333" cy="85" r="33" />
+    <rect x="30" y="334" rx="0" ry="0" width="93" height="12" /> 
+    <rect x="30" y="354" rx="0" ry="0" width="113" height="24" /> 
+    <rect x="31" y="382" rx="0" ry="0" width="145" height="16" /> 
+    <rect x="367" y="343" rx="0" ry="0" width="95" height="16" /> 
+    <rect x="358" y="372" rx="0" ry="0" width="117" height="14" /> 
+    <rect x="210" y="174" rx="0" ry="0" width="77" height="27" /> 
+    <rect x="174" y="211" rx="0" ry="0" width="152" height="21" /> 
+    <circle cx="250" cy="117" r="36" />
   </ContentLoader>
 )
 

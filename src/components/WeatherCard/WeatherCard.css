@@ -1,16 +1,44 @@
 .card {
-    background: white;
-    width: 96%;
+    width: 94%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     border-radius: 30px;
     margin: 10px 2%;
-    padding: 32px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    overflow: hidden;
+}
+
+.card__description {
+    display: flex;
+    align-items: center;
+    padding: 32px;
+    background: white;
+    width: 100%;
+}
+
+.card__image {
+    background: white;
+    border-radius: 50px;
+}
+
+.card__header {
+    width: 100%;
+    height: 300px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://i.ibb.co/w0VXW17/header-img.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .card-loading {
     padding: 0;
+    background: white;
 }
 
 .card__info__place {
@@ -31,12 +59,18 @@
 .card__weather {
     margin-left: auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 12px;
 }
 
-.card__weather__temp {
+.card__temp {
     font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.card__weather__temp {
+    font-size: 12px;
 }
 
 .card__weather__icon,
@@ -50,8 +84,11 @@ img {
         align-items: center;
         margin: auto;
     }
-    .card__weather__temp {
+    .card__temp {
         font-size: 30px;
+    }
+    .card__weather__temp {
+        font-size: 14px;
     }
 }
 
