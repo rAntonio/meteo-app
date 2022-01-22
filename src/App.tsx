@@ -11,9 +11,15 @@ function App() {
   const loadData = (input : string) => {
     setLoading(true);
     loadWeatherFromLocalisationName(input).then((data) => {
+      if(data?.cod==="404"){
+        setError(true)
+        setLoading(false);
+        return;
+      }
       setWeathers(getWeatherCardProps(data));
       setLoading(false);
-    })
+      setError(false)
+    }).catch((e)=> {console.error(e);return false})
   }
 
   //on load app, search for current location
@@ -29,6 +35,7 @@ function App() {
 
   const [weathers,setWeathers] = useState<any>(null);
   const [loading,setLoading] = useState<boolean>(true);
+  const [error,setError] = useState<boolean>(false);
 
   return (
     <div className="App">
@@ -37,6 +44,7 @@ function App() {
           placeholder='Rechercher...'
           onSubmit={loadData}
           className='input__location'
+          error={error}
         />
       </header>
       <main>
