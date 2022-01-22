@@ -55,6 +55,16 @@ img {
     }
 }
 
+
+/* Reduce animation in case if it's user preference */
+
+@media (prefers-reduced-motion) {
+    .card__weather__icon,
+    img {
+        animation-name: dissolve;
+    }
+}
+
 @keyframes move {
     to {
         transform: translateY(-10px);
